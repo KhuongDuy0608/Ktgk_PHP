@@ -1,14 +1,21 @@
-<?php include __DIR__ . '/../shares/header.php'; ?>
+
+<?php include __DIR__ . '/../shares/header.php'; 
+include __DIR__ . '../config/database.php'; ?>
+
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Danh sách sinh viên</h1>
     <div class="text-center mb-3">
-        <a href="/QLSV/SinhVien/add" class="btn btn-success">Thêm sinh viên mới</a>
+        <a href="mnm/QLSV/SinhVien/create" class="btn btn-success">Thêm sinh viên mới</a>
     </div>
 
-    <?php if (!empty($sinhviens)): ?>
+
+
+    <?php if (!empty($sv)): ?>
         <div class="list-group">
-            <?php foreach ($sinhviens as $sinhvien): ?>
+            <?php foreach ($sv as $sinhvien): ?>
+
+
                 <div class="list-group-item border rounded shadow-sm p-3 mb-3">
                 <?php
                     $imagePath = "/QLSV/public/" . ltrim($sinhvien->Hinh, '/');
@@ -24,7 +31,7 @@
                     <p class="text-muted mb-1"><?php echo htmlspecialchars($sinhvien->NgaySinh, ENT_QUOTES, 'UTF-8'); ?></p>
                     <div>
                         <a href="/QLSV/SinhVien/edit/<?php echo $sinhvien->MaSV; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                        <a href="/QLSV/SinhVine/delete/<?php echo $sinhvien->MaSV; ?>"
+                        <a href="/QLSV/SinhVien/delete/<?php echo $sinhvien->MaSV; ?>"
                         class="btn btn-danger btn-sm"
                         onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">
                             Xóa

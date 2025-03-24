@@ -15,22 +15,19 @@ class SinhVienController
         $this->sinhVienModel = new SinhVienModel($this->db);
     }
 
-    public function index()
-    {
-        $products = $this->sinhVienModel->getAllSinhVien();
-
-        if (!is_array($products)) {
-            $products = [];
-        }
-    
-        include 'app/views/SinhVien/index.php';
+    public function getAllSinhVien() {
+        $query = "SELECT * FROM sinhvien";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    
 
     public function show($MaSV)
     {
-        $product = $this->sinhVienModel->getSinhVienById($MaSV);
-        if ($product) {
-            include 'app/views/SinhVien/detail.php';
+        $sinhvien = $this->sinhVienModel->getSinhVienById($MaSV);
+        if ($sinhvien) {
+            include 'app/views/SinhVien/index.php';
         } else {
             echo "Không thấy sinh viên.";
         }

@@ -4,14 +4,14 @@ require_once 'app/controllers/SinhVienController.php';
 require_once 'app/controllers/NganhHocController.php';
 
 $uri = trim($_SERVER['REQUEST_URI'], '/');
-$uri = str_replace('QLSV/', '', $uri); 
+$uri = str_replace('mnm/QLSV/', '', $uri); 
 
 
 
 if ($uri == 'SinhVien' || $uri == 'SinhVien/index') {
     $controller = new SinhVienController();
     $controller->index();
-} elseif ($uri == 'SinhVien/add') {
+} elseif ($uri == 'SinhVien/create') {
     $controller = new SinhVienController();
     $controller->add();
 } elseif ($uri == 'SinhVien/save') {
